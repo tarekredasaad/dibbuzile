@@ -1,3 +1,86 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:002620ba1c6c590b8579adc66d34ba52078a9c376f93bbcaba38aead945e6c4b
-size 3022
+<div class="container">
+  <div class="card" >
+      <div class="card-body">
+          <div  class="head">
+              <img src="../assets/package.webp" width="12%" alt="">
+              <br>
+              <br>
+              <h2>Heavy discount on Packages</h2>
+           </div>
+      </div>
+<!--  "name": "Package 1",
+    "numOfAds": 3,
+    "numOfPremiumDays": 7,
+    "cost": 1099,
+    "adDuration": 60,
+    "subCategory": null,
+    "subCategoryID": 3,
+    "applicationUser_PackagesList": null,
+    "id": 1,
+    "deleted": false-->
+      <ul class="list-group list-group-flush">
+
+          <li *ngFor="let package of Packages" class="list-group-item" style="border-top: 3px solid rgb(230, 229, 229);">
+
+          <div class="card3">
+              <br>
+              <div class="row">
+                  <div class="col col-md-9"><h5>{{package.name}}</h5></div>
+                  <div class="col col-md-3">
+                      <button type="button" (click)="Pay(package)" class="btn btn-danger w-50 ">Pay</button>
+                  </div>
+              </div>
+          
+          <br>
+          <div class="row">
+              <div class="col col-md-10">
+                  <p><i style="color: #ffba3c;" class="fa-solid fa-check"></i> &nbsp; Package available for 30 days</p>
+              </div>
+            </div>
+          <hr>
+          <br>
+          <div class="row">
+            <div class="col col-md-10" >
+                <p><i style="color: #ffba3c;" class="fa-solid fa-check"></i> &nbsp;Get noticed with 'Premium' tag in a top position for {{package.numOfPremiumDays}} days</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-10" >
+                <p><i style="color: #ffba3c;" class="fa-solid fa-check"></i> &nbsp;Listing Ad valid for {{package.adDuration}} days</p>
+            </div>
+          </div>
+          <br>
+            <div class="card smallCard col col-md-2">
+                
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <p style="font-weight: bold; font-size: 18px; margin-bottom: 0px;">{{package.numOfAds}} Ads</p>
+                </li>
+                <li class="list-group-item">
+                 <div class="row">
+                  <div class="col col-md-8">
+                      <p style="font-weight: bold; font-size: 18px; margin-bottom: 0px;">EGP {{package.cost}}</p>
+                  </div>
+                 </div>
+                </li>
+              </ul>
+             
+            </div>
+            <br>
+          </div>
+        </li>
+
+        <li class="list-group-item" style="border-top: 3px solid rgb(230, 229, 229);">
+          <br>
+          <h5>CUSTOMIZED PACKAGES</h5>
+          <br>
+          <p>Can't find the right package above?</p>
+          <p>Contact us for more customized packages:</p>
+          <button type="button" class="btn btn-outline-danger">Contact Sales Team</button>
+          
+      </li>
+      </ul>
+      
+    </div>
+  
+</div>

@@ -1,3 +1,90 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a215e9b6c029bc0c50b5fb8a4acf998556e4d5865be4b4ac9a58176ef7a0fa6f
-size 1699
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+#CategoryDiv button{
+    width: 100px;
+}
+
+
+.modal-header {
+    display: inline;
+  }
+  
+  .modal-title {
+    color: rgb(255, 90, 0);
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    border: none;
+    background-color: white;
+    height: 40px;
+    width: 40px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
+  .modal-body{
+    height: 400px;
+  }
+ .spanBtns
+  {
+color: black;
+margin-left: 10px;
+  }
+  .modal-body  div{
+    margin-top: 10px;
+  }
+  .modal-body div button{
+    width: 320px;
+    height: 50px;
+    text-align: center;
+  }
+ 
+  .modal-body div button:hover
+  {
+    background-color: #ffc7c7;
+
+  }

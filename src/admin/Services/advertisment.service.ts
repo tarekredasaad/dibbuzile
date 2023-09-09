@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2b272e5a9c2479eaff934c83904d4bf1fcced585ecc3877807529c088fb94498
-size 857
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AdvertismentService {
+
+  _AllNotActiveAdsUrl="http://localhost:7189/api/Admin/GetAllNotActiveAdvertisments";
+  _EditNotActiveAdUrl="http://localhost:7189/api/Admin/EditAdvertisment?id=";
+
+  
+  constructor(private http:HttpClient) { }
+
+  getallNotActiveAds()
+  {
+   return this.http.get(this._AllNotActiveAdsUrl).pipe(catchError((err: any) => {
+    return throwError(() => err.message || "server error");
+    }));
+  }
+
+
+
+  EditNotActiveAd(AdID:any)
+  {
+   return this.http.put(this._EditNotActiveAdUrl+AdID,0).pipe(catchError((err: any) => {
+    return throwError(() => err.message || "server error");
+    }));
+  }
+
+
+}

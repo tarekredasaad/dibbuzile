@@ -1,3 +1,216 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7dda25aabd75e8ed2c9c00373402a373ff3feae8d6a3d31c127ea85dfd68362e
-size 10094
+<div >
+  <div class="row flex-nowrap  p-0 m-0">
+
+    <div class="col-auto col-md-3 col-xl-2 bg-dark min-vh-100">
+      <div style="position: fixed; ">
+      <app-sidebar></app-sidebar>
+    </div>
+    </div>
+      <div class="col py-3" id="PackageDiv">
+        <h1 class="m-1 mb-4">Packages</h1>
+        <td> <button class="btn btn-success" (click)="openPackageModal()">New</button> </td>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td style="font-size: 15px;" scope="col">Name</td>
+              <td style="font-size: 15px;" scope="col">NumOfAds</td>
+              <td style="font-size: 15px;" scope="col">NumOfPremiumDays</td>
+              <td style="font-size: 15px;" scope="col">AdDuration</td>
+              <td style="font-size: 15px;" scope="col">Cost</td>
+              <td style="font-size: 15px;" scope="col">SubCategory Name</td>
+              <td style="font-size: 15px;" scope="col">Edit</td>
+              <td style="font-size: 15px;" scope="col">Delete</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let package of PackageList;  index as i">
+              <th scope="row">{{package.name}}</th>
+              <th scope="row">{{package.numOfAds}}</th>
+              <th scope="row">{{package.numOfPremiumDays}}</th>
+              <th scope="row">{{package.adDuration}}</th>
+              <th scope="row">{{package.cost}}</th>
+              <th scope="row">{{package.subCategoryName}}</th>
+              <td> <button class="btn btn-primary" (click)="openPackageEditModal(package,i)">Edit</button> </td>
+              <td> <button class="btn btn-danger" (click)="Delete(package.id,i)">Delete</button> </td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- Add -->
+  <div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="onClosePackageHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h4> Add New Package</h4>
+        </div>
+        <div class="modal-body px-5 text-center ">
+          <div>
+            <form id="FormAdd" [formGroup]="AddForm" (ngSubmit)="AddPackage()">
+              <div class="form-outline form-group mx-3" style="float: left;">
+                <label class="form-label" for="form3Example3c">Name</label>
+                <input [class.is-invalid]="name?.invalid &&name?.touched" formControlName="name" type="text"
+                  class="form-control" />
+                <div *ngIf="name?.errors &&name?.touched">
+                  <small *ngIf="name?.errors?.['required']" class="text-danger">Package Name is required</small>
+                </div>
+              </div>
+
+              <div class="form-outline form-group" style="float: left;">
+                <label class="form-label" for="form3Example3c">NumOfAds</label>
+                <input [class.is-invalid]="numOfAds?.invalid &&numOfAds?.touched" formControlName="numOfAds" type="text"
+                  class="form-control" />
+                <div *ngIf="numOfAds?.errors &&numOfAds?.touched">
+                  <small *ngIf="numOfAds?.errors?.['required']" class="text-danger">NumOfAds is required</small>
+                </div>
+              </div>
+
+              <div style="float: none;"></div>
+
+              <div class="form-outline form-group mx-3" style="float: left;">
+                <label class="form-label" for="form3Example3c">NumOfPremiumDays</label>
+                <input [class.is-invalid]="numOfPremiumDays?.invalid &&numOfPremiumDays?.touched" formControlName="numOfPremiumDays" type="text"
+                  class="form-control" />
+                <div *ngIf="numOfPremiumDays?.errors &&numOfPremiumDays?.touched">
+                  <small *ngIf="numOfPremiumDays?.errors?.['required']" class="text-danger">NumOfPremiumDays is required</small>
+                </div>
+              </div>
+
+
+              <div class="form-outline form-group" style="float: left;">
+                <label class="form-label" for="form3Example3c">AdDuration</label>
+                <input [class.is-invalid]="adDuration?.invalid &&adDuration?.touched" formControlName="adDuration" type="text"
+                  class="form-control" />
+                <div *ngIf="adDuration?.errors &&adDuration?.touched">
+                  <small *ngIf="adDuration?.errors?.['required']" class="text-danger">AdDuration is required</small>
+                </div>
+              </div>
+
+              <div style="float: none;"></div>
+
+              <div class="form-outline form-group mx-3" style="float: left;">
+                <label class="form-label" for="form3Example3c">Cost</label>
+                <input [class.is-invalid]="cost?.invalid &&cost?.touched" formControlName="cost" type="text"
+                  class="form-control" />
+                <div *ngIf="cost?.errors &&cost?.touched">
+                  <small *ngIf="cost?.errors?.['required']" class="text-danger">Cost is required</small>
+                </div>
+              </div>
+
+              <div class="from-group" style="float: left; width: 180px;">
+                <label class="form-label" for="form3Example3c">SubCategory Name</label>
+                <select class="form-control" formControlName="subCategoryID" name="ddlTopic">
+                  <option *ngFor="let subCat of SubCatList" [value]="subCat.id">
+                    {{subCat.name}}
+                  </option>
+                </select>
+              </div>
+              <div style="float: none;"></div>
+
+              <small class="text-danger">{{messageError}}</small>
+              <button type="submit" class="form-control mt-3 btn btn-success">Add</button>
+            </form>
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--Edit-->
+  <div class="modal" id="exampleModal" [ngStyle]="{'display':displayEditModel}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onClosePackageEditModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4> Edit Package</h4>
+      </div>
+      <div class="modal-body px-5 text-center ">
+        <div>
+          <form id="FormAdd" [formGroup]="AddForm" (ngSubmit)="EditPackage()">
+            <div class="form-outline form-group mx-3" style="float: left;">
+              <label class="form-label" for="form3Example3c">Name</label>
+              <input [class.is-invalid]="name?.invalid &&name?.touched" formControlName="name" type="text"
+                class="form-control" />
+              <div *ngIf="name?.errors &&name?.touched">
+                <small *ngIf="name?.errors?.['required']" class="text-danger">Package Name is required</small>
+              </div>
+            </div>
+
+            <div class="form-outline form-group" style="float: left;">
+              <label class="form-label" for="form3Example3c">NumOfAds</label>
+              <input [class.is-invalid]="numOfAds?.invalid &&numOfAds?.touched" formControlName="numOfAds" type="text"
+                class="form-control" />
+              <div *ngIf="numOfAds?.errors &&numOfAds?.touched">
+                <small *ngIf="numOfAds?.errors?.['required']" class="text-danger">NumOfAds is required</small>
+              </div>
+            </div>
+
+            <div style="float: none;"></div>
+
+            <div class="form-outline form-group mx-3" style="float: left;">
+              <label class="form-label" for="form3Example3c">NumOfPremiumDays</label>
+              <input [class.is-invalid]="numOfPremiumDays?.invalid &&numOfPremiumDays?.touched" formControlName="numOfPremiumDays" type="text"
+                class="form-control" />
+              <div *ngIf="numOfPremiumDays?.errors &&numOfPremiumDays?.touched">
+                <small *ngIf="numOfPremiumDays?.errors?.['required']" class="text-danger">NumOfPremiumDays is required</small>
+              </div>
+            </div>
+
+
+            <div class="form-outline form-group" style="float: left;">
+              <label class="form-label" for="form3Example3c">AdDuration</label>
+              <input [class.is-invalid]="adDuration?.invalid &&adDuration?.touched" formControlName="adDuration" type="text"
+                class="form-control" />
+              <div *ngIf="adDuration?.errors &&adDuration?.touched">
+                <small *ngIf="adDuration?.errors?.['required']" class="text-danger">AdDuration is required</small>
+              </div>
+            </div>
+
+            <div style="float: none;"></div>
+
+            <div class="form-outline form-group mx-3" style="float: left;">
+              <label class="form-label" for="form3Example3c">Cost</label>
+              <input [class.is-invalid]="cost?.invalid &&cost?.touched" formControlName="cost" type="text"
+                class="form-control" />
+              <div *ngIf="cost?.errors &&cost?.touched">
+                <small *ngIf="cost?.errors?.['required']" class="text-danger">Cost is required</small>
+              </div>
+            </div>
+
+            <div class="from-group" style="float: left; width: 180px;">
+              <label class="form-label" for="form3Example3c">SubCategory Name</label>
+              <select class="form-control" formControlName="subCategoryID" name="ddlTopic">
+                <option *ngFor="let subCat of SubCatList" [value]="subCat.id">
+                  {{subCat.name}}
+                </option>
+              </select>
+            </div>
+            <div style="float: none;"></div>
+
+            <small class="text-danger">{{messageError}}</small>
+            <button type="submit" class="form-control mt-3 btn btn-success">Edit</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+  

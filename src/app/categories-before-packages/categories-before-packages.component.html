@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7497a6f92e5a9a16c6e364fd3783c8838df4fc67519d454f4a89228a2f99eb2e
-size 982
+
+<div class="d-flex justify-content-center">
+    <div class="card text-center" style="width:38rem;">
+        <div class="card-body px-5">
+          <h6 class="card-title mb-4 mx-1">SELECT OPTIONS TO SHOW PACKAGES</h6>
+          
+          <select class="form-select mb-3 w-75 mx-5" (change)="getSubCategories(CategorySelect.value)" #CategorySelect>
+            <option selected disabled>Select Category</option>
+            <option [value]="category.id" *ngFor="let category of categories" >{{category.name}}</option>
+          </select>
+    
+          <select class="form-select mb-3 w-75  mx-5"  #subCategorySelect>
+            <option selected disabled>Select SubCategory</option>
+            <option [value]="subCategory.id" *ngFor="let subCategory of subCategories" >{{subCategory.name}}</option>
+          </select>
+    
+          <button class="btn btn-danger" (click)="GoToPackage(subCategorySelect.value)"> Show Packages</button>
+        </div>
+      </div>
+    </div>
+    

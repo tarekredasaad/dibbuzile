@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e228b684ee099f26d3f0f6ba95e9d64fb443f83770156389fe86534e8d9f358
-size 2096
+<div class="container">
+  <h2 style="color: #e00000;">{{advertismentUser.userName}}</h2>
+  <p>{{advertismentUser.userEmail}}</p>
+  <hr>
+  <br>
+  <h6>Published ads ({{advertismentUser.countAds}})</h6>
+  <div class="row ads-user">
+    <span *ngFor="let a of advertismentUser.advertismetsUsersDTOs" class=" col col-md-4 col-xs-12 col-sm-6" style="margin-top: 30px;">
+    <div class="card cardStyle" style="width: 90%; height:100%;  padding: 0px;" >
+      <span >
+      <span *ngFor="let im of a.imageDTOs; index as i" (click)="AdvertismentUserDetails(a)">
+      <img src='http://localhost:7189/Files/AdvertismentIMG/{{im.imageName}}' style="border-radius:10px 10px 0px 0px;" class="card-img-top" alt="..." *ngIf="i<1" width="25rem" height="200px">
+     </span>
+      <div class="card-body" >
+        <div class="row">
+          <div class="col col-md-10">
+            <h6 class="card-title" style="font-size: 20px;color: #e00000;" (click)="AdvertismentUserDetails(a)">{{a.title}}</h6>
+          </div>
+          <div class="col col-md-2">
+            <button (click)="AddToFavorite(a)"  class="btnHeart btn-floating col-2 " >
+              <i *ngIf="a.isSaved==true" class="fa-solid fa-heart heart" style="font-size: 18px; margin-top: 5px; color:#e00000;" id="{{'heart'+a.id+appUserId}}"></i>              
+              <i *ngIf="a.isSaved==false" class="fa-solid fa-heart heart" style="font-size: 18px; margin-top: 5px; color: #ffffff;" id="{{'heart'+a.id+appUserId}}"></i>  
+        </button>
+
+          </div>
+        </div>
+        <br>
+        <span *ngFor="let r of a.advertisment_RentOptionList; index as i">
+        <p class="card-text" *ngIf="i<1"> <b style="font-size:16px ;" (click)="AdvertismentUserDetails(a)">EGP {{r.cost}}</b></p>
+        </span>
+        <p class="card-text" style="font-size:15px ;font-weight: 500;" (click)="AdvertismentUserDetails(a)">{{a.location}}</p>
+        <p class="card-text" style="font-size:15px" (click)="AdvertismentUserDetails(a)">{{a.date | date : 'yyyy-MM-dd'}}</p>
+      </div>
+      </span>
+      <br>
+    </div>
+    </span>
+   
+    </div>
+</div>

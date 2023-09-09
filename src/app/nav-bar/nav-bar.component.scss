@@ -1,3 +1,148 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:397e895f8c9c1f885ccbe3f4e65ef7249176ceabc740e13c045387b924006e07
-size 2150
+.navbar
+{
+    border-bottom: 1px solid rgb(223, 223, 223);
+}
+#searchDiv{
+    margin-top:10px;
+    width: 480px;
+}
+
+#selectMenu{
+    margin-top:10px;
+    width: 300px;
+    height: 50px;
+}
+
+#searchBtn{
+    background-color:#e00000;
+    height: 50px;
+}
+#searchBtn:hover
+{
+    background-color:  #BA0000;
+}
+
+#sellBtn{
+    background-color:#e00000 ;
+    color: white;
+    margin-top: 10px;
+    width: 130px;
+    font-size:18px;
+    vertical-align: baseline;
+    height: 50px;
+}
+#sellBtn:hover
+{
+    background-color:  #BA0000;
+}
+
+.textLi
+{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#loginLi
+{
+border-bottom: 1 solid #e00000;
+}
+#loginLi:hover
+{
+border: none;
+}
+
+
+
+
+// Modal
+
+
+
+  .modal-header {
+    display: inline;
+  }
+  
+  .modal-title {
+    color: rgb(255, 90, 0);
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    border: none;
+    background-color: white;
+    height: 40px;
+    width: 40px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal {
+    
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
+  .modal-body{
+    height: 400px;
+  }
+ .spanBtns
+  {
+color: black;
+margin-left: 10px;
+  }
+  .modal-body  div{
+    margin-top: 10px;
+  }
+  .modal-body div button{
+    width: 320px;
+    height: 50px;
+    text-align: center;
+  }
+ 
+  .modal-body div button:hover
+  {
+    background-color: #ffc7c7;
+
+  }
+ 
+  #emailBtn,#passBtn,#conPassBtn
+  {
+    width: 400px;
+    background-color: #e00000;
+    color: white;
+  }
+
+  .form-control:focus,.form-select:focus {
+    box-shadow: none;
+  }

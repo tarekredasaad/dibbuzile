@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1cbb94ee14fd43ef7cd0669026bf4395f82f3dc2286dd567db84b31745f2679c
-size 559
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { FooterComponent } from './footer.component';
+
+describe('FooterComponent', () => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [FooterComponent]
+    });
+    fixture = TestBed.createComponent(FooterComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

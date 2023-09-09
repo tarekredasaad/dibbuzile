@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:774412480c558f010094014d2aa969d11418e6726469273c6b2e0cb30075a660
-size 674
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { FilterationRoutingModule } from './filteration-routing.module';
+import { FilterSideComponent } from './FilterSide/filter-side/filter-side.component';
+import { AddvertisSideComponent } from './AddvertisSide/addvertis-side/addvertis-side.component';
+import { FormsModule } from '@angular/forms';
+
+
+
+@NgModule({
+  declarations: [
+    FilterSideComponent,
+    AddvertisSideComponent
+    
+  ],
+  imports: [
+    CommonModule,
+    FilterationRoutingModule,
+    FormsModule
+  
+  ]
+  ,exports:[FilterSideComponent
+  ,AddvertisSideComponent
+  
+]
+})
+export class FilterationModule { }

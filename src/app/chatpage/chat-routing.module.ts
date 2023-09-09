@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2b11010f61ab5dc4970f112311bc9a1cfd0e1ac1af1a7dcc6520423d0a3dd6b4
-size 422
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+// import { UserprofileComponent } from './userprofile/userprofile.component';
+import { ChatComponent } from './chat/chat.component';
+
+const routes: Routes = [
+  {path:"chat",component:ChatComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ChatRoutingModule { }

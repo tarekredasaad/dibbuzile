@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d11c533ba1732b0f5eef7051bf2165497343aea30804f4eb3f241172ad2f9c95
-size 588
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { DelAccountComponent } from './del-account.component';
+
+describe('DelAccountComponent', () => {
+  let component: DelAccountComponent;
+  let fixture: ComponentFixture<DelAccountComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [DelAccountComponent]
+    });
+    fixture = TestBed.createComponent(DelAccountComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

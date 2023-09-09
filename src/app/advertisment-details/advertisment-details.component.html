@@ -1,3 +1,281 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f2437b93846153bafbd6d4b04fc8309e585d6fd6e6eb0d6f7ece9f18dded08cc
-size 15040
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-1"></div>
+    <div class="mt-3 col-7  col-md-12 col-lg-7 col-xl-7 col-sm-12 col-xs-12 details">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <!-- <div class="carousel-indicators" *ngFor="let img of advertismentDetail.advertismentImagesList; index as i">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 'i'"></button>
+
+              </div> -->
+        <div class=" carousel-inner">
+          <div class="carousel-item active" *ngFor="let img of advertismentDetail.advertismentImagesList">
+            <img src='http://localhost:7189/Files/AdvertismentIMG/{{img.imageName}}' style="height:600px;" class="w-100"
+              alt="...">
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="card mt-3" style="padding-top: 10px;padding-left: 10px;">
+        <div class="row">
+          <div class="mt-2 col-6   col-lg-5 col-xl-4 col-sm-5">
+            <span *ngFor="let c of advertismentDetail.advertisment_RentOptionList; index as i">
+              <h1 style="font-weight: bold;color: red;" *ngIf="i<1">EGP {{c.cost}}</h1>
+            </span>
+          </div>
+          <div class="mt-2 col-3  col-lg-5 col-xl-6 col-sm-5"></div>
+
+          <div class="mt-2 col-1   col-lg-1 col-xl-1 col-sm-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share"
+              viewBox="0 0 16 16">
+              <path
+                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+            </svg>
+          </div>
+          <button (click)="AddToFavorite(advertismentDetail)"  class="btnHeart btn-floating col-2 " >
+                  <i *ngIf="advertismentDetail.isSaved==true" class="fa-solid fa-heart heart" style="font-size: 18px; margin-top: 5px; color:#e00000;" id="heart"></i>              
+                  <i *ngIf="advertismentDetail.isSaved==false" class="fa-solid fa-heart heart" style="font-size: 18px; margin-top: 5px; color: #ffffff;" id="heart"></i>  
+            </button>   
+
+        </div>
+
+        <div class="row mt-3">
+          <h5>{{advertismentDetail.title}}</h5>
+        </div>
+
+        <div class="row  price">
+          <div class=" col-5 col-md-5   col-lg-5 col-xl-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            </svg>
+            <span><small>{{advertismentDetail.location}}</small></span>
+          </div>
+          <div class="col-5 col-lg-5 col-md-5 col-xl-5  "></div>
+          <div class="col-2 col-lg-2 col-md-2 col-xl-2 space">
+            <p><small>{{advertismentDetail.date | date : 'dd-MM-yyyy'}}</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Details</h5>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-4" *ngFor="let v of advertismentDetail.advertisment_FiltrationValuesList">
+              <div class="row">
+                <div class="col col-md-5">
+                  <h6>{{v.key}}</h6>
+                </div>
+                <div class="col col-md-6">
+                  <p>{{v.value}}</p>
+                </div>
+              </div>
+              <br>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Reviews</h5>
+            <div class="revs" *ngFor="let rl of filtredReviewList;index as i" style="padding-top: 10px;">
+              <div class="row">
+                <div class="col-1">
+                  <label>{{rl.userName}}</label>
+                </div>
+                <div class="col-5">
+                  <div id="textCol">
+                    <input type="text" id="myText" class="form-control" [disabled]="true" #TextInput
+                      value={{rl.text}} />
+                    <!-- <label>{{rl.text}}</label> -->
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <ngb-rating style="font-size: 25px;" id="myRate" [max]="5" [(rate)]="rl.rate" #RateInput
+                    [readonly]="true"></ngb-rating>
+                </div>
+
+                <div *ngIf="rl.autherId==appUserId;then thenShow;"></div>
+                <ng-template #thenShow>
+                  <div class="col-2">
+                    <button #SaveBtn hidden type="button" class="btn btn-success"
+                      (click)="SaveEdit(TextInput,RateInput,SaveBtn)">save</button>
+                  </div>
+                  <div class="col-1">
+                    <button type="button" class="btn btn-success"
+                      (click)="editreview(rl.id,i,TextInput,RateInput,SaveBtn)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-pen" viewBox="0 0 16 16">
+                        <path
+                          d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div class="col-1">
+                    <!-- "delreview(rl,i)" -->
+                    <button type="button" class="btn btn-danger" (click)="delreview(rl, i)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                        <path
+                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                      </svg>
+                    </button>
+                  </div>
+                </ng-template>
+
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <form [formGroup]="ReviewForm" style="display: flex;" (ngSubmit)="sendReview()">
+
+                <div class="col-5">
+                  <div class="form-group">
+                    <input formControlName="text" class="form-control" type="text" placeholder="Enter your review" />
+                  </div>
+                </div>
+                <div class="col-3"></div>
+                <div class="col-2">
+                  <div class="form-group">
+                    <ngb-rating formControlName="rate" [max]="5" id="rateSend" style="font-size: 25px;"
+                      [readonly]="false"></ngb-rating>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <button type="submit" class="btn btn-success" id="sendBtn">Send</button>
+
+                </div>
+              </form>
+            </div>
+
+
+
+            <!-- <div class=" row  card-body " *ngFor="let r of advertismentDetail.reviewsList; last as l">
+                      <div class="mt-3 col-2  col-md-2 col-lg-2 col-xl-2 col-sm-2">
+                          <div style="border-radius: 50%;background-color: rgb(255, 220, 226);width:50px;height: 50px;text-align: center;padding-top: 15px;">User</div>
+                      </div>
+                      <div class="col-10 col-md-10 col-lg-10 col-xl-10 col-sm-10" style="padding-top: 20px;" >
+                          
+                          <h6 class="card-title">{{r.userName}}</h6>
+                          <p class="card-text" style="font-size: 15px;">{{r.userEmail}}</p>
+                          <br>
+                          <p class="card-text">{{r.text}}</p>
+                      </div>
+                      <hr *ngIf="!l" style="margin-top: 20px;">
+                     </div> -->
+
+            <div class=" row card-body "></div>
+
+          </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="mt-3 col-4  col-md-12 col-lg-3 col-xl-3 col-sm-12 col-xs-12 user">
+
+      <div class=" card" style="padding: 10px;">
+        <div class=" row  card-body profile" (click)="AdvertismentUser(advertismentDetail)">
+          <div class="mt-3 col-2  col-md-4 col-lg-3 col-xl-2 col-sm-4">
+            <div
+              style="border-radius: 50%;background-color: rgb(255, 220, 226);width:50px;height: 50px;text-align: center;padding-top: 10px;">
+              {{FirstChar}}</div>
+          </div>
+          <div class="mt-3 col-10  col-md-5 col-lg-10 col-xl-10 col-sm-9">
+            <h4 class="card-title" style="font-size: 20px;">{{advertismentDetail.applicationUserName}}</h4>
+            <p class="card-text" style="font-size: 15px;">{{advertismentDetail.applicationEmail}}</p>
+            <a style="text-decoration: none;font-size: 13px;">
+              <p class="card-text" style="color: red;font-weight: bold;">See profile ></p>
+            </a>
+          </div>
+        </div>
+        <div class="d-grid gap-2 col-12 mx-auto">
+          <button class="btn btn-danger" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+            </svg>
+            Show phone number
+          </button>
+        </div>
+
+        <!-- <div class="d-grid gap-2 col-12 mx-auto" style="padding-top: 10px;" (click)="BeginChat(advertismentDetail.applicationUserId)"> -->
+
+        <div class="d-grid gap-2 col-12 mx-auto" style="padding-top: 10px;" (click)="BeginChat(advertismentDetail)">
+          <button type="button" class="btn btn-light" style="border: 1px solid red;">
+            <svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-wechat" viewBox="0 0 16 16">
+              <path
+                d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.324.324 0 0 0-.12.366l.218.81a.616.616 0 0 1 .029.117.166.166 0 0 1-.162.162.177.177 0 0 1-.092-.03l-1.057-.61a.519.519 0 0 0-.256-.074.509.509 0 0 0-.142.021 5.668 5.668 0 0 1-1.576.22ZM9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.615.615 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.627.627 0 0 0 .098.356Z" />
+              <path
+                d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.499.499 0 0 0-.032.14.192.192 0 0 0 .193.193c.039 0 .077-.01.111-.029l1.268-.733a.622.622 0 0 1 .308-.088c.058 0 .116.009.171.025a6.83 6.83 0 0 0 1.625.26 4.45 4.45 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02.05 0 .1 0 .15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826Zm4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Zm3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Z" />
+            </svg>
+            Chat
+          </button>
+        </div>
+
+      </div>
+
+
+
+
+      <div class=" card mt-3" style="padding: 5px;">
+        <div class="mt-3 col-10  col-md-5 col-lg-12 col-xl-12 col-sm-12">
+          <h4 class="card-title" style="font-weight: bold;">Your safety matters to us!</h4>
+          <ul>
+            <li>Only meet in public / crowded places for example metro stations and malls.</li>
+            <li>Never go alone to meet a buyer / seller, always take <br />someone with you.</li>
+            <li>Check and inspect the product properly before purchasing it.</li>
+            <li>Never pay anything in advance or transfer money before inspecting the product.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class=" card mt-3" style="padding: 5px;">
+        <div class="mt-3 col-10  col-md-5 col-lg-12 col-xl-12 col-sm-12">
+          <h4 class="card-title" style="font-weight: bold;"> Review valuation</h4>
+          <input type="radio" name="rad" (click)="filterReviews(-1)" [value]="-1"/>
+          <label style="margin-left: 10px">
+            All
+        </label>
+          <div *ngFor='let in of counter(6) ;let i = index'>
+            <input type="radio" name="rad" (click)="filterReviews(i)" [value]="i"/>
+            <label style="margin-left: 10px">
+            <ngb-rating [max]="5" id="rateSend" style="font-size: 25px;" [rate]="i" [readonly]="true"></ngb-rating>
+          </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

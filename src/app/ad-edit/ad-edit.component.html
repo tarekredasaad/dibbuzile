@@ -1,3 +1,133 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b780eb4673a1abc98407f8ef25bcc84c4fa415d802d578d63cf5ac3eee9cd0b5
-size 6652
+<div class="container-fluid">
+    <div class="row">
+
+        <h5 style="padding-top: 2%; text-align: center;">EDIT YOUR AD</h5>
+
+        <div class="col-1"></div>
+
+        <div class="col-10 px-5 pt-3" style="border: 1px solid rgb(163, 155, 155);margin-top:10px;border-radius: 10px;">
+
+            <form [formGroup]="EditForm" novalidate (ngSubmit)="SaveData()">
+
+                <div class="form-group mb-4">
+                    <label for="title" class="form-label">Ad title</label>
+                    <input formControlName="title" id="title" [class.is-invalid]="title?.invalid && title?.touched"
+                        [value]="title.value" type="text" class="form-control" />
+                    <small *ngIf="title?.invalid && title?.touched" class="text-danger">Title is required.</small>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="Location" class="form-label">Location</label>
+                    <select class="form-select" id="Location" [value]="location.value" formControlName="location">
+                        <option value="Cairo">Cairo</option>
+                        <option value="Asyut">Asyut</option>
+                        <option value="Alex">Alex</option>
+                        <option value="Sohag">Sohag</option>
+                        <option value="Aswan">Aswan</option>
+                        <option value="Luxor">Luxor</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group mb-4">
+                    <div class="form-check" *ngIf="AdDetails.adType=='For Rent'">
+                        <input class="form-check-input" type="radio" name="adType" id="adType" value="For Rent"
+                            formControlName="adType"><!--(click)="AddRentOption()"-->
+                        <label class="form-check-label" for="adType">
+                            For Rent
+                        </label>
+                    </div>
+                    <div class="form-check" *ngIf="AdDetails.adType!='For Rent'">
+                        <input class="form-check-input" type="radio" name="adType" id="adType" value="For Sell"
+                            formControlName="adType"><!--(click)="SellOption()"-->
+                        <label class="form-check-label" for="adType">
+                            For Sell
+                        </label>
+                    </div>
+                </div>
+
+                <input class="btn btn-primary " *ngIf="flagRentBtn||AdDetails.adType=='For Rent'"
+                    (click)="AddRentOption2()" value="Add Rent">
+                <div formArrayName="AdvertismentRentOptions" class=" form-group mb-4 row"
+                    *ngFor="let RentOptions of EditForm.controls.AdvertismentRentOptions?.controls; let i = index">
+                    <ng-container [formGroupName]="i">
+                        <div *ngIf="AdDetails.adType=='For Rent'" class="col-3">
+                            <label for="unit" class="form-label">Unit</label>
+                            <select class="form-control mb-4" formControlName="unit" id="unit">
+                                <option *ngFor="let data of UnitList;" [value]="data">
+                                    {{data}}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="AdDetails.adType=='For Rent'" class="col-3">
+                            <label for="duration" class="form-label">Duration</label>
+                            <input type="number" formControlName="duration" class="form-control" id="duration">
+                        </div>
+                        <div class="col-3">
+                            <label for="cost" class="form-label">Cost</label>
+                            <input type="number" id="cost" class="form-control" formControlName="cost">
+                        </div>
+                        <div class="col-3" style="padding-top:32px;" *ngIf="AdDetails.adType=='For Rent'">
+                            <input type="button" style="width:200px;" class="btn btn-danger"
+                                (click)="deleteRentOption((RentOptions.value).id,i)" value="delete">
+                        </div>
+                    </ng-container>
+                </div>
+
+
+                <div class="form-group mb-4">
+                    <div formArrayName="AdvertismentFiltrationValuesList"
+                        *ngFor="let FiltrationValues of EditForm.controls.AdvertismentFiltrationValuesList?.controls; let i = index">
+                        <ng-container [formGroupName]="i">
+                            <label for="filterValueID" class="form-label">{{filters[i].filterName}}</label>
+                            <select class="form-control mb-4" formControlName="filterValueID" id="filterValueID">
+                                <option *ngFor="let data of filterList[i];" [value]="data.id">
+                                    {{data.value}}
+                                </option>
+                            </select>
+                        </ng-container>
+                    </div>
+
+                </div>
+
+                <div class="mb-4 row">
+                    <div class="col-12 col-sm-6 col-lg-2 mx-0"
+                        *ngFor='let image of AdDetails.advertismentImagesList; index as i'>
+                        <input type="button" class="btn btn-danger mb-1" (click)="deleteImage(image.id,i)"
+                            value="delete">
+                        <img src='http://localhost:7189/Files/AdvertismentIMG/{{image.name}}' class="preview">
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col-8">
+                        <label class="btn btn-default p-0">
+                            <input formControlName="AdvertismentImagesList" type="file" accept="image/*" multiple
+                                (change)="selectFiles($event)" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-4 row">
+                    <div class="col-12 col-sm-6 col-lg-2 mx-0" *ngFor='let preview of previews' >
+                        <img style="margin-right:20px;" [src]="preview"
+                            class="preview">
+                    </div>
+                </div>
+
+
+                <div class="PostBtn mt-4 mb-4">
+                    <input type="button" type="submit" class="btn btn-danger" value="Post Now">
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col-1"></div>
+    </div>
+
+
+
+</div>

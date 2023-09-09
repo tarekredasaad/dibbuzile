@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1f72e92f71a466ffbd33701e73dc1b3ebf3b8fd5cd4ddcbeff266c47e977b8d1
-size 582
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { CatNavBarComponent } from './cat-nav-bar.component';
+
+describe('CatNavBarComponent', () => {
+  let component: CatNavBarComponent;
+  let fixture: ComponentFixture<CatNavBarComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [CatNavBarComponent]
+    });
+    fixture = TestBed.createComponent(CatNavBarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

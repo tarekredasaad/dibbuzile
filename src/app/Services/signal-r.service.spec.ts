@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b78fbcb7b509dcb9086856870f0b7c0acc979efd319cd455604f62b769454f08
-size 363
+import { TestBed } from '@angular/core/testing';
+
+import { SignalRService } from './signal-r.service';
+
+describe('SignalRService', () => {
+  let service: SignalRService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(SignalRService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

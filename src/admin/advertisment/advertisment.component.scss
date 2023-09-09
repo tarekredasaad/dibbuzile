@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:139021601586bc7382bd85ad384a374287d90e3db8b6cdf8f7f241174160a2e2
-size 448
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+#AdvertismentDiv button{
+    width: 100px;
+}
+
+tbody tr td
+{
+  font-size:15px;
+}

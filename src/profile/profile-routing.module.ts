@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d873915482bcb6fddec8ac74ba907d8d89c5adde84402f0853fcf12419abed85
-size 377
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+
+const routes: Routes = [
+  {path:'account',component:UserprofileComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ProfileRoutingModule { }

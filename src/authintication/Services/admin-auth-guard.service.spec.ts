@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0b8ad97d3e427a6e82add5994fe2b8485e32b4915a51640bb30d377bacc10616
-size 399
+import { TestBed } from '@angular/core/testing';
+
+import { AdminAuthGuardService } from './admin-auth-guard.service';
+
+describe('AdminAuthGuardService', () => {
+  let service: AdminAuthGuardService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(AdminAuthGuardService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

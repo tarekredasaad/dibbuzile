@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:71b85d6cf9c6547cebcdab69928002c8564756e54f4d1c1630989b9d141f0664
-size 523
+.anchors
+{
+    background-color: #e00000;
+     color: white;
+     width: 100px;
+}
+h5.card-title
+{
+    color: #e00000;
+}
+.btnHeart{
+    transition: 0.4s;
+    border: none; 
+    width: 40px;
+     height: 40px; 
+     border-radius: 60%; 
+     align-items: center;
+     background-color:rgba(33, 32, 32, 0.148);
+     z-index: 100;
+  } 
+  .cardStyle{
+    transition: 0.4s;
+    border-radius: 10px;
+    border: 2px solid rgb(236, 236, 236);
+}
+.cardStyle:hover{
+   cursor: pointer;
+   box-shadow: 3px 1px 6px rgb(232, 232, 232);
+}

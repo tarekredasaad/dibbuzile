@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2afdb06b9fd66dab0b7711b823edbce9d9ddf45f910634a9f9569d00e73cc4b1
-size 596
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { CatBeforeAdComponent } from './cat-before-ad.component';
+
+describe('CatBeforeAdComponent', () => {
+  let component: CatBeforeAdComponent;
+  let fixture: ComponentFixture<CatBeforeAdComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [CatBeforeAdComponent]
+    });
+    fixture = TestBed.createComponent(CatBeforeAdComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:046cb163f4dcb36e11e16963ff2594ba5092916703aefee52c2f150de69a5612
-size 419
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}	
+
+#main_nav
+{
+    padding-left: 70px;
+}
+.navbar .nav-item .nav-link::after
+{
+    content: none;
+}
+
+ul li 
+{
+    font-size: 17px;
+}

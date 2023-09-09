@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0c3526e7e9b0b256a682d9a10b5e415dd058380e96143c2104692f5bf6f80b5f
-size 367
+import { TestBed } from '@angular/core/testing';
+
+import { CategoryService } from './category.service';
+
+describe('CategoryService', () => {
+  let service: CategoryService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(CategoryService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8b0b11547bbf1ddddf087f3decb8f26bd7ceebea5bbaf252149c2a0ab8425cf8
-size 474
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DisplayService {
+
+  public constructor() {
+    this.showNavigation$ = this.showNavigation.asObservable();
+  }
+  public showNavigation$: Observable<boolean>;
+
+  private showNavigation: Subject<boolean> = new Subject<boolean>();  
+
+  public setNavigationVisibility(visible: boolean): void {
+    this.showNavigation.next(visible);
+  }
+}

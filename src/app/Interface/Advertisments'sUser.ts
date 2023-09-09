@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f077004d2de2e7c031f29b76ccdea340f1c2c39b9ec28a88e627c07060d8a6dc
-size 462
+export interface IadvertismetUser{
+    userName: string,
+    userEmail: string,
+    countAds: number,
+    advertismetsUsersDTOs: IadvertismetsUsersDTOs[]
+}
+
+export interface IadvertismetsUsersDTOs{
+    id:number,
+    title: string,
+    location: string,
+    adType: string,
+    adStatus: string,
+    isSaved:boolean,
+    date: Date,
+    expirationDate: Date,
+    expireDateOfPremium: Date,
+    imageDTOs: []
+}
+export interface IimageDTOs{
+    imageName: string
+}

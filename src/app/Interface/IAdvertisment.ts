@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:61eb29f835f6a62efc4d6fe673efd9ba1ca49dc1ed2ab3a21887a81584735995
-size 530
+export interface IAdsHomePage{
+    id:number,
+    name: string,
+    categoryAdvertismentsList: IcategoryAdvertismentsList[],
+}
+export interface IcategoryAdvertismentsList{
+    id: number,
+    title: string,
+    adType: string,
+    adStatus: string,
+    location: string,
+    isSaved: boolean,
+    date: Date,
+    advertismentImagesList: IAdvertismentImages[],
+    advertisment_RentOptionList: IAdvertismentRent[]
+}
+export interface IAdvertismentImages{
+    imageName:string
+}
+export interface IAdvertismentRent{
+    cost: number
+}

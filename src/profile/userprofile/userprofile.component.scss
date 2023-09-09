@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f92d51256f694a34a50c83f7ea5f0db1e8e336b611b0004698b36421e61728df
-size 400
+@media (max-width: 600px) {
+    .details ,.delHeader,.delBtn,.inputNumAndEmail,.paraNumAndEmail{
+      display: inline-block;
+      width: 100%;
+    }
+    .Description{
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 5%;
+        margin-top: 0px;
+      }
+    .saveDiv,.saveBtn,.delAccDiv{
+      width: 100%;
+      text-align: center;
+      padding-top: 10px;
+    } 
+    
+  }

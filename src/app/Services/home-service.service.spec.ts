@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:18723d9e14c238687d58042dbe90d14400d1a9140474a1cd4ee25adafedc3297
-size 383
+import { TestBed } from '@angular/core/testing';
+
+import { HomeServiceService } from './home-service.service';
+
+describe('HomeServiceService', () => {
+  let service: HomeServiceService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(HomeServiceService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

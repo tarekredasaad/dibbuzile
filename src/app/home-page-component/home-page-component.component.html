@@ -1,3 +1,141 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dc4ac8b85c4b80572d895069e935a9d831a8d5543bcb98f8512e4147a0033e44
-size 5343
+<div class="container ">
+ <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+ 
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img src="../assets/cars.jpeg" class="w-100 d-block" alt="First slide">
+
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/jobs.jpeg" class="w-100 d-block" alt="Second slide">
+    
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/electronics.jpeg" class="w-100 d-block" alt="Third slide">
+    
+    </div>
+
+    <div class="carousel-item">
+      <img src="../assets/properties.jpeg" class="w-100 d-block" alt="Third slide">
+   
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </button>
+ </div>
+
+     <br>
+     <br>
+      <h2 style="text-align: left;">Popular Categories</h2>
+      <br>
+      <br>
+      <div class="row category-card" >
+        <div class="col col-md-3 col-xs-12 col-sm-6" *ngFor="let c of categories">
+          <div class="row">
+            
+            <div class="col col-md-10">
+         <h3 style="font-size: 20px;">- {{c.name}}</h3></div>
+         </div>
+         <br>
+         <div *ngFor="let s of c.subCategoriesList; index as i">
+         <h5 *ngIf="i<2" style="font-size: 17px; line-height: 30px;" class="subCategory" (click)="AdvertismentsBySubCategory(s)">{{s.name}}</h5>
+         </div>
+           <div class="row">
+            <div class="col col-md-10">
+           <h4 class="header4 category" (click)="AdvertismentsByCategory(c)">All in {{c.name}}</h4>
+           </div>
+           <!-- <div class="col col-md-1">
+            <i class="fa-solid fa-chevron-right" style="color: #8a0f0f; font-size: 15px;"></i>
+           </div> -->
+           </div>
+           <br>
+           <br>
+        </div>
+        
+       
+      </div>
+  <br>
+  <br>
+  <br>
+  <div *ngFor="let c of Advertisments">
+    <div class="row">
+      <div class="col col-md-10"><h2 style="font-size: 25px;"> {{c.name}}</h2></div>
+      <div class="col col-md-2">
+        <h3 class="header4 viewMore" style="font-size: 20px;" (click)="NavigateToAds(c)">View More </h3>
+      </div>
+    </div>
+   <br>
+    <div class="row home-card" >
+
+      <span *ngFor="let a of c.categoryAdvertismentsList; index as in" class=" col col-md-3 col-xs-12 col-sm-6 card-card" style="padding-top: 10px;">
+      <div class="card cardStyle" style="width: 90%; height:100%;  padding: 0px;" *ngIf="in<4" >
+      <!-- (click)="AdvertismentDetails(a)"> -->
+        <span  >
+        <span *ngFor="let im of a.advertismentImagesList; index as i" (click)="AdvertismentDetails(a)">
+          <div  class="card-img-overlay">
+            <button type="button" class="btn btn-danger px-1">{{a.adType}}</button>
+          </div>
+          <img src='http://localhost:7189/Files/AdvertismentIMG/{{im.imageName}}' style="border-radius:10px 10px 0px 0px;" class="card-img-top" alt="..." *ngIf="i<1" width="25rem" height="200px">
+         </span>
+
+     
+
+      
+        <div class="card-body" >
+          <div class="row" >
+
+            <div class="col col-md-10" (click)="AdvertismentDetails(a)">
+              <h6 class="card-title" style="font-size: 20px;color: #e00000;">{{a.title}}</h6>
+            </div>
+            <button *ngIf="userId!=null" type="button" (click)="AddToFavorite(a)"  class="btnHeart btn-floating col-2 " >
+            <ng-container *ngIf="(a.isSaved==true); then red else white"></ng-container>
+                <ng-template #red>
+                  <i class="fa-solid fa-heart heart" style="font-size: 18px; margin-top: 5px; color:#e00000;" id="{{'heart'+a.id+userId}}"></i>                 </ng-template>
+                <ng-template #white>
+                  <i class="fa-solid fa-heart heart" style="font-size: 18px; margin-top: 5px; color: #ffffff;" id="{{'heart'+a.id+userId}}"></i> 
+                </ng-template>
+            </button>
+          </div>
+          <br>
+       
+          <p class="card-text" style="font-size:15px ;font-weight: 500;" (click)="AdvertismentDetails(a)">{{a.location}} {{a.date | date : 'dd-MM-yyyy'}}</p>
+       
+          <div class="mb-1 " *ngIf="a.adType=='For Rent'">
+            <span *ngFor="let r of a.advertisment_RentOptionList; index as i" (click)="AdvertismentDetails(a)">
+            <p class="card-text btn btn-outline-danger mb-1"> <b style="font-size:16px ;">{{r.duration}}:{{r.unit}}:{{r.cost}} EGP</b></p>
+            </span>
+          </div>
+          <div *ngIf="a.adType=='For Sell'">
+            <span *ngFor="let r of a.advertisment_RentOptionList; index as i" (click)="AdvertismentDetails(a)">
+              <p class="card-text btn btn-outline-danger" > <b style="font-size:16px ;"> {{r.cost}} EGP</b></p>
+              </span>
+            </div>
+
+        </div>
+        </span>
+      </div>
+     
+    
+      </span>
+
+
+      </div>
+  <br>
+  <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      </div>
+    
+    </div>
+  
+  
+  

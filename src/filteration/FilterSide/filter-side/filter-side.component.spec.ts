@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b4e2b8a8a3862af3e787915d1667a79ddbb1db898245732a665e5debdb99ff13
-size 588
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { FilterSideComponent } from './filter-side.component';
+
+describe('FilterSideComponent', () => {
+  let component: FilterSideComponent;
+  let fixture: ComponentFixture<FilterSideComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [FilterSideComponent]
+    });
+    fixture = TestBed.createComponent(FilterSideComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

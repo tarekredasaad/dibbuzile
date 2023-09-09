@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:60cb6ccdf3fda7c976231ca7db41eb20042b4b6ae8612f9016fedb3b3497b0fa
-size 630
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AdvertismentUserComponent } from './advertisment-user.component';
+
+describe('AdvertismentUserComponent', () => {
+  let component: AdvertismentUserComponent;
+  let fixture: ComponentFixture<AdvertismentUserComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AdvertismentUserComponent]
+    });
+    fixture = TestBed.createComponent(AdvertismentUserComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

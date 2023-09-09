@@ -1,3 +1,120 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3aaa7a5113fa643be672a91bd41139e234660e2ffeb6c8c97a776b3513cc5c67
-size 5146
+<div >
+  <div class="row flex-nowrap  p-0 m-0">
+
+    <div class="col-auto col-md-3 col-xl-2 bg-dark min-vh-100">
+      <div style="position: fixed; ">
+      <app-sidebar></app-sidebar>
+    </div>
+    </div>
+  
+      <div class="col py-3" id="CategoryDiv">
+        <h1 class="m-1 mb-4">Filter Values</h1>
+        <td> <button class="btn btn-success" (click)="openFilterValueModal()" >New</button> </td>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td style="font-size: 15px;" scope="col">Value</td>
+              <td style="font-size: 15px;" scope="col">SubCategory Filter</td>
+              <td style="font-size: 15px;" scope="col">Edit</td>
+              <td style="font-size: 15px;" scope="col">Delete</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let filterValue of FilterValuesList;  index as i">
+              <th scope="row">{{filterValue.value}}</th>
+              <th scope="row">{{filterValue.subCategory_FilterName}}</th>
+              <td> <button class="btn btn-primary" (click)="openFilterValueEditModal(filterValue,i)">Edit</button> </td>
+              <td> <button class="btn btn-danger" (click)="Delete(filterValue.id,i)">Delete</button> </td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- Add -->
+  <div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="onCloseFilterValueHandled()"><span
+              aria-hidden="true">&times;</span></button>
+          <h4> Add New FilterValue</h4>
+        </div>
+        <div class="modal-body p-5 text-center">
+          <div class="d-flex flex-row align-items-center mb-4 px-5">
+            <form [formGroup]="AddForm" (ngSubmit)="AddFilterValue()">
+              <div class="form-outline form-group">
+                <label class="form-label" for="form3Example3c">Value</label>
+                <input [class.is-invalid]="value?.invalid &&value?.touched" formControlName="value" type="text"
+                  class="form-control" />
+                <div *ngIf="value?.errors &&value?.touched">
+                  <small *ngIf="value?.errors?.['required']" class="text-danger">Value is required</small>
+                </div>
+              </div>
+              <div class="from-group">
+                <label class="form-label" for="form3Example3c">SubCategory Filter</label>
+                <select class="form-control" formControlName="subCategory_FilterID" name="ddlTopic">
+                  <option *ngFor="let SubCategoryFilter of SubCategoryFilterList" [value]="SubCategoryFilter.id">
+                    {{SubCategoryFilter.subCategory.name+" # "+SubCategoryFilter.filter.name}}
+                  </option>
+                </select>
+              </div>
+              <small class="text-danger">{{messageError}}</small>
+              <button type="submit" class="form-control mt-3 btn btn-success">Add</button>
+            </form>
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--Edit-->
+  <div class="modal" id="exampleModal" [ngStyle]="{'display':displayEditModel}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseFilterValueEditModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4> Edit FilterValue</h4>
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4 px-5">
+          <form [formGroup]="AddForm" (ngSubmit)="EditFilterValue()">
+            <div class="form-outline form-group">
+              <label class="form-label" for="form3Example3c">Value</label>
+              <input [class.is-invalid]="value?.invalid &&value?.touched" formControlName="value" type="text"
+                class="form-control" />
+              <div *ngIf="value?.errors &&value?.touched">
+                <small *ngIf="value?.errors?.['required']" class="text-danger">Value is required</small>
+              </div>
+            </div>
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">SubCategory Filter</label>
+              <select class="form-control" formControlName="subCategory_FilterID" name="ddlTopic">
+                <option *ngFor="let SubCategoryFilter of SubCategoryFilterList" [value]="SubCategoryFilter.id">
+                  {{SubCategoryFilter.subCategory.name+" # "+SubCategoryFilter.filter.name}}
+                </option>
+              </select>
+            </div>
+            <small class="text-danger">{{messageError}}</small>
+            <button type="submit" class="form-control mt-3 btn btn-success">Add</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

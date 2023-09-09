@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b93c654d5c4b8f6a02c50b2303ebbc7dc13a94bee5912934ac7eafc8fcf677d2
-size 494
+.head{
+    background-color: #fff6d9; 
+    text-align: center;
+    padding: 30px;
+}
+
+.card2,.card3{
+    padding-left: 30px;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+      width: 100%;
+    }
+     .smallCard{
+        width: 100%;
+    }
+    .sale{
+        width: 40%;
+    }
+    img{
+        width: 50%;
+    } 
+ 
+    
+  }
+
+  @media (max-width: 2000px) {
+    .container {
+        width: 50%;
+      } 
+     .smallCard{
+        width: 100%;
+    } 
+     .sale{
+        width: 40%;
+    } 
+  
+  }

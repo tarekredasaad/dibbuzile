@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:64d1867e479f1ea3fd2528e98db93514cbceda206c3d967cdb07404db669c884
-size 638
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HomePageComponentComponent } from './home-page-component.component';
+
+describe('HomePageComponentComponent', () => {
+  let component: HomePageComponentComponent;
+  let fixture: ComponentFixture<HomePageComponentComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [HomePageComponentComponent]
+    });
+    fixture = TestBed.createComponent(HomePageComponentComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

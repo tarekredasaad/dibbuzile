@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cff89fe2c7e31a1d756c2e2544e9063baee2ef2c65b5d9953c70d40539404f59
-size 362
+import { TestBed } from '@angular/core/testing';
+
+import { ProfileService } from './profile.service';
+
+describe('ProfileService', () => {
+  let service: ProfileService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ProfileService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

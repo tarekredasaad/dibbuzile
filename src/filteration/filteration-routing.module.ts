@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2ba278a8c27cc82857905ef74ba3c74e6d14c9a154f7b5a8e4044252bc15131f
-size 422
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AddvertisSideComponent } from './AddvertisSide/addvertis-side/addvertis-side.component';
+
+const routes: Routes = [
+  {path:'Advertisment/:id/:type',component:AddvertisSideComponent},
+
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class FilterationRoutingModule { }

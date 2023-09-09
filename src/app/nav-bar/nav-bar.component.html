@@ -1,3 +1,230 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2850e97ff2e98aab91b8762c420dde543fc1d252e3ccf8ef116e3404c7e0661f
-size 9871
+<nav class="navbar navbar-expand-lg p-2 fixed-top bg-white">
+  <div class="container-fluid ">
+    <a class="navbar-brand ms-5" routerLink=""><img height="45px" width="90px" src="/assets/second-hand.png" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+        <li class="nav-item mx-2">
+          <div class="input-group ">
+            <select class="form-select form-select-sm" id="selectMenu" aria-label=".form-select-sm example">
+              <option selected disabled>Egypt</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Alex">Alex</option>
+              <option value="Assuit">Assuit</option>
+              <option value="Fayum">Fayum</option>
+              <option value="Sohag">Sohag</option>
+            </select>
+          </div>
+        </li>
+
+        <li class="nav-item mx-2">
+          <div class="input-group " id="searchDiv">
+            <input type="text" class="form-control" placeholder="Find Cars, Mobile Phones and more ..."
+              aria-label="Username" aria-describedby="basic-addon1" #serachInput>
+            <button class="input-group-text" (click)="search(serachInput.value)" id="basic-addon1" id="searchBtn"><i class="fa-solid fa-magnifying-glass"
+                style="color: #ffffff;" ></i></button>
+          </div>
+        </li>
+
+        <li *ngIf="!isUserAuthenticated()" class="nav-item mx-2 textLi">
+          <a class="nav-link active" aria-current="page" href="#">العربية</a>
+        </li>
+
+         <li *ngIf="!isUserAuthenticated()" class="nav-item mx-2 textLi" id="loginLi">
+          <a class="nav-link active btn"  style="border: none;" aria-current="page" (click)="openLoginModal()">Login</a>
+        </li>
+
+        <li *ngIf="isUserAuthenticated()" class="nav-item mx-4 dropdown" style="font-size:20px; margin-top:10px;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{UserName}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item"  routerLink="/myprofile/account">Profile</a></li>
+            <li><a class="dropdown-item" [routerLink]="['MyAds']">My Ads</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/Favorite']">My Favoriets</a></li>
+            <li><a class="dropdown-item" routerLink="/MyPackages">My Packages</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/categories']">Buy Business Packages</a></li>
+          </ul>
+        </li>
+
+        <li *ngIf="isUserAuthenticated()" class="nav-item mx-4 textLi" id="loginLi">
+          <a class="nav-link active btn" style="border: none;" aria-current="page" (click)="logOut()">Logout</a>
+        </li>
+
+        <li class="nav-item mx-4 " >
+          <button routerLink="/selectCategory" class="btn" id="sellBtn">Sell</button>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+<div class="modal mt-5"  id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseLoginModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <img height="45px" width="100px" src="/assets/second-hand.png" alt="Logo">
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div>
+          <button class="btn btn-outline-danger"><i class="fa-brands fa-google" style="color: #e00000;"></i> <span
+              class="spanBtns">Continue with Google</span></button>
+        </div>
+
+        <div>
+          <button class="btn btn-outline-danger"> &nbsp; &nbsp;<i class="fa-brands fa-facebook"
+              style="color: #e00000;"></i> <span class="spanBtns">Continue with Facebook</span></button>
+        </div>
+
+        <div>
+          <button (click)="openEmailModal()" class="btn btn-outline-danger"><i class="fa-solid fa-envelope"
+              style="color: #e00000;"></i> <span class="spanBtns">Continue with Email &nbsp;</span></button>
+        </div>
+
+        <div>
+          <button class="btn btn-outline-danger"><i class="fa-solid fa-phone" style="color: #e00000;"></i> <span
+              class="spanBtns">Continue with Phone &nbsp;</span></button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal mt-5" id="exampleModal" [ngStyle]="{'display':Emaildisplay}" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseLoginModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <img height="45px" width="100px"  src="/assets/second-hand.png" alt="Logo">
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4">
+          <form [formGroup]="LoginForm" (ngSubmit)="sendEmail()">
+            <div class="form-outline form-group">
+              <label class="form-label" for="form3Example3c">Your Email</label>
+              <input [class.is-invalid]="Email?.invalid &&Email?.touched" formControlName="Email" type="email"
+                class="form-control" />
+              <div *ngIf="Email?.errors &&Email?.touched">
+                <small *ngIf="Email?.errors?.['required']" class="text-danger">Email is required</small>
+                <small class="text-danger"
+                  *ngIf="Email?.errors?.['forbiddenEmail']">{{Email?.errors?.['forbiddenEmail'].value}} is not
+                  allowed</small>
+              </div>
+            </div>
+            <button type="submit" id="emailBtn" class="form-control mt-3">Next</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal mt-5" id="exampleModal" [ngStyle]="{'display':passworddisplay}" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onClosePasswordModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <img height="45px" width="100px"  src="/assets/second-hand.png" alt="Logo">
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4">
+          <form [formGroup]="LoginForm" (ngSubmit)="sendEmailAndPassLogin()">
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <div class="form-outline flex-fill mb-0 form-group">
+                <label class="form-label" for="form3Example4c">Password</label>
+                <input [class.is-invalid]="Password?.invalid &&Password?.touched" formControlName="Password"
+                  type="password" class="form-control" />
+                <small class="text-danger" *ngIf="Password?.invalid &&Password?.touched">password is required</small>
+                <span class="text-danger">{{passErrorMSG}}</span>
+              </div>
+            </div>
+            <button type="submit" id="passBtn" class="btn submitbtn form-control mt-3">Next</button>
+          </form>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal mt-5" id="exampleModal" [ngStyle]="{'display':confirmPassdisplay}" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseConfirmPasswordModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <img height="45px" width="100px"  src="/assets/second-hand.png" alt="Logo">
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4">
+          <form [formGroup]="LoginForm" (ngSubmit)="sendEmailAndPassRegister()">
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <div class="form-outline flex-fill mb-0 form-group">
+                <label class="form-label" for="form3Example4c">Password</label>
+                <input [class.is-invalid]="Password?.invalid &&Password?.touched" formControlName="Password"
+                  type="password" class="form-control" />
+                <small class="text-danger" *ngIf="Password?.invalid &&Password?.touched">password is required</small>
+              </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <div class="form-outline flex-fill mb-0 form-group">
+                <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                <input formControlName="confirmPassword" type="password" class="form-control" />
+                <small class="text-danger" *ngIf="confirmPassword?.invalid &&confirmPassword?.touched">password is
+                  required</small>
+                <small class="text-danger" *ngIf="LoginForm.errors?.['misMatch']">Password and confirm password not
+                  match</small>
+              </div>
+            </div>
+            <button type="submit" id="conPassBtn" class="form-control mt-3">Next</button>
+          </form>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

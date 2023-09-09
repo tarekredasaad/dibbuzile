@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f8d96eb6a9d12c47cb55494dac00b4fed5e9555f98329130915e0ba1cee1fedd
-size 357
+import { TestBed } from '@angular/core/testing';
+
+import { EnrollService } from './enroll.service';
+
+describe('EnrollService', () => {
+  let service: EnrollService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(EnrollService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

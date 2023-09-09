@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:58422374262b6c1524baefb70eac75ea7f61928fb5367e1b62d60bfa155860ca
-size 432
+import { AbstractControl, FormGroup } from "@angular/forms";
+
+export function ConfirmPasswordValidator(control:AbstractControl)
+{
+  const password=control.get('password');
+  const confirmPassword=control.get('confirmPassword');
+
+ if(password?.pristine ||confirmPassword?.pristine)
+ {
+    return null
+ }
+ else
+ {
+    return password && confirmPassword && password.value!=confirmPassword.value 
+    ? {'misMatch':true}
+    :null;
+ }
+}

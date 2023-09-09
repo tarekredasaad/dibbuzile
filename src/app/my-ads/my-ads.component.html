@@ -1,3 +1,185 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:79e13bea035f469424efeddbe42913e18fe655c4623353ced5e1331955b5443d
-size 8740
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <!-- <div class="input-group">
+                <button style="font-size: 12px;" class="input-group-text" id="basic-addon1"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" class="form-control" placeholder="Search by Ad Title or ID" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div> -->
+        </div>
+        <div class="col-6"></div>
+        <!-- <div class="col-2">
+            <ejs-dropdownlist placeholder="Filter By Category" style="font-weight: bold;" />
+        </div> -->
+        <div class="col-1"></div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-1"></div>
+        <div class="col-1">
+            <button type="button" style="height: 50px;" class="btn btn-outline-danger btns" (click)="AllAds()">View
+                all({{AllAdsCounter}})</button>
+        </div>
+        <div class="col-1">
+
+            <button type="button" style="height: 50px;" class="btn btn-outline-danger btns" (click)="ActiveAds()">Active
+                Ads({{ActivedsCounter}})</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-outline-danger btns" (click)="InactiveAds()">Inactive
+                Ads({{InActivedsCounter}})</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-outline-danger btns" (click)="PendingAds()">Pending
+                Ads({{PendingdsCounter}})</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-outline-danger btns" (click)="ModeratedAds()">Moderated
+                Adds({{ModerateddsCounter}})</button>
+        </div>
+        <div class="col-6"></div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <p style="font-weight: bold;">Heavy discount on Packages </p>
+        </div>
+        <div class="col-2">
+            <a href="#" style="text-decoration: none;" [routerLink]="['/categories']">View Packages ></a>
+        </div>
+        <div class="col-8"></div>
+    </div>
+
+
+    <div class="row mb-3" *ngFor="let ad of FiltredAdvertisments;index as i">
+        <div class="col-1"></div>
+        <div class="col-10 card cardForm " >
+            <div class="row ">
+                <div class="col-md-3" style="background-color: rgb(223, 213, 213); padding-top: 30px">
+                    <p>From:<b> {{ad.date|date:'medium'}}</b></p>
+                    <p>To:<b>{{ad.expirationDate|date:'medium'}}</b></p>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <img height="50" width="200"
+                                    src='http://localhost:7189/Files/AdvertismentIMG/{{ad.advertismentImagesList[0]}}'
+                                    class="d-block w-100" alt="...">
+
+                            </div>
+                            <div class="col-5" style="cursor: pointer;" (click)="AdvertismentDetails(ad.id)">
+                                <p class="card-text">{{ad.title}}</p>
+
+                            </div>
+                            <div class="col-2">
+                                <p class="card-text">EGP 30</p>
+
+                            </div>
+                            <div class="col-1">
+                                <button type="button" style="border-radius: 25px; width:100px;"
+                                    class="btn btn-primary btn-sm">{{ad.adStatus}}</button>
+                            </div>
+
+                            <div class="col-1" style="text-align: right;">
+                            </div>
+                            <div *ngIf="ad.adStatus!='Not Active'" class="col-2" style="text-align: right;">
+                                <button id="btnGroupDrop1" type="button" class="btn" style="border: none;"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-sharp fa-light fa-ellipsis"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <li *ngIf="ad.adStatus!='Not Active'"><a (click)="Edit(ad.id,ad.subCategoryID)" class="dropdown-item" style="cursor: pointer;">Edit now</a></li>
+                                    <li *ngIf="ad.adStatus=='Active'"><a (click)="DeActive(ad.id)" class="dropdown-item"
+                                            style="cursor: pointer;">Deactivate</a></li>
+                                    <li *ngIf="ad.adStatus=='Moderated'"><a (click)="Active(ad.id)"
+                                            class="dropdown-item" style="cursor: pointer;">Activate</a></li>
+                                    <li *ngIf="ad.adStatus=='Active'"><a (click)="openModal(ad)" class="dropdown-item"
+                                            style="cursor: pointer;">mark as sold</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <hr width="100%" />
+                        </div>
+                        <div class="row">
+                            <div class="col-2 d-flex">
+                                <i class="fa-sharp fa-light fa-eye icons"></i>
+                                <p>Views:0</p>
+                            </div>
+                            <div class="col-2 d-flex ">
+                                <i class="fa-sharp fa-light fa-heart icons"></i>
+                                <p>Likes:0</p>
+                            </div>
+                            <div class="col-2 d-flex">
+                                <i class="fa-sharp fa-light fa-comments icons"></i>
+                                <p>Chats:0</p>
+                            </div>
+                            <div class="col-4"></div>
+                            <!-- <div class="col-2"  style="text-align: right;">
+                        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/categories']">Sell faster now</button>
+                    </div> -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+
+
+<div class="modal mt-5" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseModal()"><span
+                        aria-hidden="true">&times;</span></button>
+                <img height="45px" width="100px" src="/assets/second-hand.png" alt="Logo">
+
+            </div>
+            <div class="modal-body p-5 ">
+
+                <div class="row">
+                    <div class="col-3">
+                        <img height="50" width="50"
+                            src='http://localhost:7189/Files/AdvertismentIMG/{{AdInModal.advertismentImagesList[0]}}'
+                            class="d-block w-100" alt="...">
+                    </div>
+                    <div class="col-9">
+                        <span>{{AdInModal.title}}</span>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <p>Who bought your Ad?</p>
+                        <div class="col-12 ps-4">
+                            <div class="form-check" *ngFor="let user of ChatingUsers">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1" (click)="MarkAsSold(soldBtn,user.id)" >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    {{user.userName }}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-5">
+                            <button (click)="Sold(AdInModal.id)" #soldBtn class="btn btn-primary" [disabled]="true">Mark as sold</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

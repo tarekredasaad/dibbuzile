@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:563bac4ff7233d68ea73dfb7e887b5e0a6efc9f1c22c8c972a1a549b41bdd52a
-size 588
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MyPackagesComponent } from './my-packages.component';
+
+describe('MyPackagesComponent', () => {
+  let component: MyPackagesComponent;
+  let fixture: ComponentFixture<MyPackagesComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [MyPackagesComponent]
+    });
+    fixture = TestBed.createComponent(MyPackagesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

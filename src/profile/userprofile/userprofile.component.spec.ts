@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d878b9159ec00ff917c255afb52d06a4adfdf84f11f51bf3503ea6c3ebf47b75
-size 590
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserprofileComponent } from './userprofile.component';
+
+
+describe('ProfileComponent', () => {
+  let component: UserprofileComponent;
+  let fixture: ComponentFixture<UserprofileComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [UserprofileComponent]
+    });
+    fixture = TestBed.createComponent(UserprofileComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

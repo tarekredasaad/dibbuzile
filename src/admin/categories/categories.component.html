@@ -1,3 +1,134 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e10c37c2633230b45f0264a3a29686974bf2480d4ffd96fe8012a88bdf501170
-size 5342
+<div >
+  <div class="row flex-nowrap  p-0 m-0">
+
+    <div class="col-auto col-md-3 col-xl-2 bg-dark min-vh-100">
+      <div style="position: fixed; ">
+      <app-sidebar></app-sidebar>
+    </div>
+    </div>
+
+    <div class="col py-3" id="CategoryDiv">
+      <h1 class="m-1 mb-4">Categories</h1>
+      <td> <button class="btn btn-success" (click)="openCategoryModal()">New</button> </td>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td style="font-size: 15px;" scope="col">Name</td>
+            <td style="font-size: 15px;" scope="col">Parent Category</td>
+            <td style="font-size: 15px;" scope="col">Edit</td>
+            <td style="font-size: 15px;" scope="col">Delete</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of CategoryList;  index as i">
+            <th scope="row">{{category.name}}</th>
+
+            <div *ngIf="category.parentCategory; then thenBlock; else elseBlcok"></div>
+            <ng-template #thenBlock>
+              <td>{{category.parentCategory.name}}</td>
+            </ng-template>
+
+            <ng-template #elseBlcok>
+              <td>It is Parent</td>
+            </ng-template>
+
+            <td> <button class="btn btn-primary" (click)="openCategoryEditModal(category,i)">Edit</button> </td>
+            <td> <button class="btn btn-danger" (click)="Delete(category.id,i)">Delete</button> </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Add -->
+<div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseCategoryHandled()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4> Add New Category</h4>
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4 px-5">
+          <form [formGroup]="AddForm" (ngSubmit)="AddCategory()">
+            <div class="form-outline form-group">
+              <label class="form-label" for="form3Example3c">Name</label>
+              <input [class.is-invalid]="name?.invalid &&name?.touched" formControlName="name" type="text"
+                class="form-control" />
+              <div *ngIf="name?.errors &&name?.touched">
+                <small *ngIf="name?.errors?.['required']" class="text-danger">Category Name is required</small>
+              </div>
+            </div>
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">Parent Category Name</label>
+              <select class="form-control" formControlName="parentCategoryID" name="ddlTopic">
+                <option [value]=null>It is Parent</option>
+                <option *ngFor="let parentCategory of ParentCategoryList" [value]="parentCategory.id">
+                  {{parentCategory.name}}
+                </option>
+              </select>
+            </div>
+            <small class="text-danger">{{messageError}}</small>
+            <button type="submit" class="form-control mt-3 btn btn-success">Add</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--Edit-->
+<div class="modal" id="exampleModal" [ngStyle]="{'display':displayEditModel}" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseCategoryEditModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4> Edit Category</h4>
+      </div>
+      <div class="modal-body p-5 text-center" >
+        <div class="d-flex flex-row align-items-center mb-4 px-5" >
+          <form [formGroup]="AddForm" (ngSubmit)="EditCategory()">
+            <div class="form-outline form-group">
+              <label class="form-label" for="form3Example3c">Name</label>
+              <input [class.is-invalid]="name?.invalid &&name?.touched" formControlName="name" type="text"
+                class="form-control" />
+              <div *ngIf="name?.errors &&name?.touched">
+                <small *ngIf="name?.errors?.['required']" class="text-danger">Category Name is required</small>
+              </div>
+            </div>
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">Parent Category Name</label>
+              <select class="form-control" formControlName="parentCategoryID" name="ddlTopic">
+                <div *ngIf="parentCategoryID?.value==null; then thenBlock;"></div>
+                <ng-template #thenBlock>
+                  <option [value]=null>It is Parent</option>
+                </ng-template>
+                <option *ngFor="let parentCategory of ParentCategoryList" [value]="parentCategory.id">
+                  {{parentCategory.name}}
+                </option>
+              </select>
+            </div>
+            <small class="text-danger">{{messageError}}</small>
+            <button type="submit" class="form-control mt-3 btn btn-success">Edit</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

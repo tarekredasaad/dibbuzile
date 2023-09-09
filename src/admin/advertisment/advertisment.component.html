@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2c92735c660a3b342d723b381997e1c3c83c8d9480130cb8d94591c5e1039be2
-size 1260
+<div >
+  <div class="row flex-nowrap  p-0 m-0">
+
+    <div class="col-auto col-md-3 col-xl-2 bg-dark min-vh-100">
+      <div style="position: fixed;">
+      <app-sidebar></app-sidebar>
+    </div>
+    </div>
+  
+      <div class="col py-3" id="AdvertismentDiv">
+        <h1 class="m-1 mb-4">Advertisments</h1>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td style="font-size: 15px;" scope="col">Title</td>
+              <td style="font-size: 15px;" scope="col">SubCategoryName</td>
+              <td style="font-size: 15px;" scope="col">Image</td>
+              <td style="font-size: 15px;" scope="col">Accept</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Ad of AdvertismntList; index as i" class="p-5">
+              <td scope="row"><br>{{Ad.title}}</td>
+              <td scope="row"><br>{{Ad.subCategoryName}}</td>  
+              <td>
+                <img style="height:100px; width: 150px;" src='http://localhost:7189/Files/AdvertismentIMG/{{Ad.image}}'>
+              </td>
+              <td><br><button class="btn btn-primary"(click)="Accept(Ad.id,i)">Accept</button> </td>
+            </tr>
+          </tbody>
+        </table>
+  
+  
+      </div>
+    </div>
+  </div>

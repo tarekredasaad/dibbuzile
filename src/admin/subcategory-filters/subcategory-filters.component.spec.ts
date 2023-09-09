@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3260911e9cae16f0f7a96e3f0212c4e7d34fc67d5f4acc8f979277cadfdccc98
-size 644
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { SubcategoryFiltersComponent } from './subcategory-filters.component';
+
+describe('SubcategoryFiltersComponent', () => {
+  let component: SubcategoryFiltersComponent;
+  let fixture: ComponentFixture<SubcategoryFiltersComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [SubcategoryFiltersComponent]
+    });
+    fixture = TestBed.createComponent(SubcategoryFiltersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

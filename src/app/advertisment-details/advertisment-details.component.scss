@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:da7d35c30a4a4853f5189de3e78f813602feacfb86bed638adfbcd8151419043
-size 516
+ @media (max-width: 600px) {
+      .space,.price,.user,.details {
+        display: inline-block;
+        width: 100%;
+      }
+      .fcol,.scol
+      {
+        display: inline-block;
+        width: 50%;
+      }
+      
+    }
+
+    .profile:hover{
+       cursor: pointer;
+    }
+
+  
+    .btnHeart{
+      transition: 0.4s;
+      border: none; 
+      width: 40px;
+       height: 40px; 
+       border-radius: 60%; 
+       align-items: center;
+       background-color:rgba(33, 32, 32, 0.148);
+       z-index: 100;
+    }
+
+  

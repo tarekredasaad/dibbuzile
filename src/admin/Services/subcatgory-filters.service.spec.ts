@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a5ca496a828bc8f3414aa31627a1833dfb5f87652e4ad94b57181dd292a28ec6
-size 413
+import { TestBed } from '@angular/core/testing';
+
+import { SubcatgoryFiltersService } from './subcatgory-filters.service';
+
+describe('SubcatgoryFiltersService', () => {
+  let service: SubcatgoryFiltersService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(SubcatgoryFiltersService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

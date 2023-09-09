@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:598c2e8d9c7de92831a11d173ca606a5da7d4c4578ff2be7330ab70f4cc238cd
-size 887
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { DisplayService } from './Services/display.service';
+import { Subject, takeUntil } from 'rxjs';
+
+declare const gapi: any;
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'Dubbizel_Angular';
+  constructor(private displayService: DisplayService,private cdr: ChangeDetectorRef) {}
+  
+  showNavigation = true;
+
+  private destroyed: Subject<void> = new Subject<void>();
+  ngOnInit(): void {
+    this.displayService.showNavigation$
+      .pipe(takeUntil(this.destroyed))
+      .subscribe((visible: boolean) => {
+        this.showNavigation = visible;
+      });
+  }
+  ngAfterViewChecked(){
+    //your code to update the model
+    this.cdr.detectChanges();
+ }
+  ngOnDestroy(): void {
+    this.destroyed.next();
+  }
+
+}

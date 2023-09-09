@@ -1,3 +1,122 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8a28d46c66069aab1e7c09e0e629931ed3fcf35eb70c442f7056c56781b026e4
-size 4849
+<div >
+  <div class="row flex-nowrap  p-0 m-0">
+
+    <div class="col-auto col-md-3 col-xl-2 bg-dark min-vh-100">
+      <div style="position: fixed; ">
+      <app-sidebar></app-sidebar>
+    </div>
+    </div>
+        <div class="col py-3" id="FilterDiv">
+            <h1 class="m-1 mb-4">SubCategories Filters</h1>
+            <td> <button class="btn btn-success" (click)="openSubCatFilterModal()">New</button> </td>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td style="font-size: 15px;" scope="col">SubCategory Name</td>
+                        <td style="font-size: 15px;" scope="col">Filter Name</td>
+                        <td style="font-size: 15px;" scope="col">Edit</td>
+                        <td style="font-size: 15px;" scope="col">Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let SubCatFilter of SubCatFilterList;  index as i" >
+                        <th scope="row">{{SubCatFilter.subCatName}}</th>
+                        <th scope="row">{{SubCatFilter.filterName}}</th>
+                        <td> <button class="btn btn-primary"(click)="openSubCatFilterEditModal(SubCatFilter,i)" >Edit</button> </td>
+                        <td> <button class="btn btn-danger" (click)="Delete(SubCatFilter.id,i)" >Delete</button> </td>
+                    </tr>
+                  
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Add -->
+<div class="modal" id="exampleModal" [ngStyle]="{'display':display}" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseSubCatFilterHandled()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4> Add New SubCategory Filter</h4>
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4 px-5">
+          <form [formGroup]="AddForm" (ngSubmit)="AddSubCatFilter()">
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">SubCategory Name</label>
+              <select class="form-control" formControlName="subCatID" name="ddlTopic">
+                <option *ngFor="let SubCat of SubCatList" [value]="SubCat.id">
+                  {{SubCat.name}}
+                </option>
+              </select>
+            </div>
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">Filter Name</label>
+              <select class="form-control" formControlName="filterID" name="ddlTopic">
+                <option *ngFor="let filter of FilterList" [value]="filter.id">
+                  {{filter.name}}
+                </option>
+              </select>
+            </div>
+          <small class="text-danger">{{messageError}}</small>
+            <button type="submit" class="form-control mt-3 btn btn-success">Add</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--Edit-->
+<div class="modal" id="exampleModal" [ngStyle]="{'display':displayEditModel}" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseSubCatFilterEditModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4> Edit SubCategory Filter</h4>
+      </div>
+      <div class="modal-body p-5 text-center">
+        <div class="d-flex flex-row align-items-center mb-4 px-5">
+          <form [formGroup]="AddForm" (ngSubmit)="EditSubCatFilter()">
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">SubCategory Name</label>
+              <select class="form-control" formControlName="subCatID" name="ddlTopic">
+                <option *ngFor="let SubCat of SubCatList" [value]="SubCat.id">
+                  {{SubCat.name}}
+                </option>
+              </select>
+            </div>
+            <div class="from-group">
+              <label class="form-label" for="form3Example3c">Filter Name</label>
+              <select class="form-control" formControlName="filterID" name="ddlTopic">
+                <option *ngFor="let filter of FilterList" [value]="filter.id">
+                  {{filter.name}}
+                </option>
+              </select>
+            </div>
+          <small class="text-danger">{{messageError}}</small>
+            <button type="submit" class="form-control mt-3 btn btn-success">Edit</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

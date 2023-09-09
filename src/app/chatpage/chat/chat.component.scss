@@ -1,3 +1,283 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7a951064d72a4a95262ca9af8265930eab5f9ec799df90b42cff34c64d16032f
-size 4663
+// // .row{
+// //     border: 1px solid white;
+// // }
+
+// @media (max-width: 600px) {
+//     .inbox {
+//       width: 100%;
+//     }
+//     .chatt{
+//         width: 100%;
+//     }
+//   }
+
+
+
+// @import '~@fortawesome/fontawesome-free/css/all.css';
+
+// .title{
+//     padding: 8px;
+//     border-radius: 5px  0 0 0;
+// }
+// .title>span{
+//     font-size: large;
+// }
+// .header>span{
+//     border: 1px solid red;
+//     padding: 3px;
+// }
+// .formatHeaderButton{
+//     display: flex;
+//     justify-content: space-around;
+//     margin-bottom: 7px;
+// }
+// .H_item{
+//     border-radius: 25px ;
+// }
+// .list_user{
+//     height: 400px;
+// }
+// .chat_room{
+    
+//     height: auto;
+//     // width: 100%;
+//     overflow: auto;
+// }
+// .send_icon{
+//     //margin-right: 15px;
+//     background-color: black;
+//     color: white;
+// }
+// .deleteicon{
+//     position: relative;
+//     left: 18px;
+//     color: red;
+// }
+// .deleteiconleft{
+//     position: relative;
+//     right: 18px;
+//     color: red;
+// }
+// .sendersection{
+//     width: 100%;
+// }
+// .sender{
+//     //margin-left: 5px;
+//     margin-top: 5px;
+//     display: inline-table;
+//     width: 40%;
+//     height: 30px;
+
+//     background-color: #c4dbfa;//rgb(67, 228, 67); 
+//     // black;
+    
+//     border-radius: 0px 10px 10px 0px;
+// }
+// .rightMsg{
+//     width: 100%;
+//     display: block;
+// }
+// .reciver{
+//     //margin-left: 5px;
+//     margin-top: 5px;
+//     display: inline-table;
+//     float: right;
+//     width: 40%;
+//     height: 30px;
+//     background-color: rgb(246,246,246);
+//     border-radius: 10px 0px 0px 10px;
+// }
+// .input{
+//     border: 1px solid ;
+//     border-radius: 10px;
+//     //margin-left: 6px;
+//     background-color: #5e616a;
+// }
+// .file{
+//    position: relative;
+// //    right:  27px; 
+
+//    //right:  20px; 
+// }
+// .filebrowse{
+//     opacity: 0;
+//     position: relative;
+//    right:  27px;
+// }
+// .image{
+//     // width: 90px;
+//     height: 90px;
+// }
+// .emptyimg{
+
+//     width: 100%;
+//     display: flex;
+//       justify-content: center;
+// }
+// .imageAdv{
+//     height: 50px;
+// }
+// .profile {
+//     width: 90%;
+//     padding-left: 7px;
+//     margin-top: 8px;
+//     //display: flex;
+//     align-items: center;
+//   }
+  
+//   .profile-image {
+//     width: 50px;
+//     height: 50px;
+//     border-radius: 50%;
+//     //margin-right: 10px;
+//   }
+//   .d-none{
+//     opacity: 0;
+//     display: none;
+//   }
+//   .profile-name {
+//     font-size: 20px;
+//     font-weight: bold;
+//   }
+  
+
+@media (max-width: 600px) {
+    .inbox {
+      width: 100%;
+    }
+    .chatt{
+        width: 100%;
+    }
+  }
+
+
+
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.title{
+    padding: 8px;
+    border-radius: 5px  0 0 0;
+}
+.title>span{
+    font-size: large;
+}
+.header>span{
+    border: 1px solid red;
+    padding: 3px;
+}
+.formatHeaderButton{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 7px;
+}
+.H_item{
+    border-radius: 25px ;
+}
+.list_user{
+    height: 400px;
+}
+.chat_room{
+    
+    height: auto;
+    // width: 100%;
+    overflow: auto;
+}
+.send_icon{
+    //margin-right: 15px;
+    background-color: black;
+    color: white;
+}
+.deleteicon{
+    position: relative;
+    left: 18px;
+    color: red;
+}
+.deleteiconleft{
+    position: relative;
+    right: 18px;
+    color: red;
+}
+.sendersection{
+    width: 100%;
+}
+.sender{
+    //margin-left: 5px;
+    margin-top: 5px;
+    display: inline-table;
+    width: 40%;
+    height: 30px;
+
+    background-color: #c4dbfa;//rgb(67, 228, 67); 
+    // black;
+    
+    border-radius: 0px 10px 10px 0px;
+}
+.rightMsg{
+    width: 100%;
+    display: block;
+}
+.reciver{
+    //margin-left: 5px;
+    margin-top: 5px;
+    display: inline-table;
+    float: right;
+    width: 40%;
+    height: 30px;
+    color: #000;
+    background-color: rgb(246,246,246);
+    border-radius: 10px 0px 0px 10px;
+}
+
+.sold{
+    display: block;
+}
+.input{
+    border: 1px solid ;
+    border-radius: 10px;
+    //margin-left: 6px;
+    background-color: #5e616a;
+}
+.file{
+   position: relative;
+   //right:  20px; 
+}
+.filebrowse{
+    opacity: 0;
+    position: relative;
+   right:  27px;
+}
+.image{
+    // width: 90px;
+    height: 90px;
+}
+.emptyimg{
+
+    width: 100%;
+    display: flex;
+      justify-content: center;
+}
+.imageAdv{
+    height: 50px;
+}
+.profile {
+    width: 90%;
+    padding-left: 7px;
+    margin-top: 8px;
+    //display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    //margin-right: 10px;
+  }
+  .d-none{
+    opacity: 0;
+    display: none;
+  }
+  .profile-name {
+    font-size: 20px;
+    font-weight: bold;
+  }

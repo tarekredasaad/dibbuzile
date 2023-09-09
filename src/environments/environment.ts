@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e91774d5c45827acdec9c0af85c6bf595d6277ca719e22333081e95f121c4bc6
-size 154
+export const environment = {
+  apiUrl:"http://tariqreda308-001-site1.etempurl.com/api/",
+  // apiurl:'http://tariqreda308-001-site1.etempurl.com/api/'
+};

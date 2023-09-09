@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:52e155b83e9498a7b55658b81d1bea4aeec836c63158b8769d2918d06ea1877c
-size 505
+export interface IGetAllFavorite{
+    advertismentHomePageDTOs:IadvertismentHomePageDTOs []
+       
+}
+
+export interface IadvertismentHomePageDTOs{
+    id: number,
+    title: string,
+    adType: string,
+    adStatus: string,
+    location: string,
+    isSaved: boolean,
+    date: Date,
+    advertismentImagesList: IAdvertismentImages[],
+    advertisment_RentOptionList: IAdvertismentRent[]
+}
+export interface IAdvertismentImages{
+    imageName:string
+}
+export interface IAdvertismentRent{
+    cost: number
+}

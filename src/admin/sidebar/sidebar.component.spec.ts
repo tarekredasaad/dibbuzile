@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:974e644ed1bf9b8415e656615b21adc0dad594587e60ccd85cd5757e69fe0751
-size 566
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { SidebarComponent } from './sidebar.component';
+
+describe('SidebarComponent', () => {
+  let component: SidebarComponent;
+  let fixture: ComponentFixture<SidebarComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [SidebarComponent]
+    });
+    fixture = TestBed.createComponent(SidebarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

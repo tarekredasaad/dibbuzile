@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9ca901d800e785fb367ac95b90afbde435eb3e084fcfe2dc10db71315ed1fc4b
-size 357
+import { TestBed } from '@angular/core/testing';
+
+import { FilterService } from './filter.service';
+
+describe('FilterService', () => {
+  let service: FilterService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(FilterService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

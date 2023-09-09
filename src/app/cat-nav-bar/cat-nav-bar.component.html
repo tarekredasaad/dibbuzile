@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a41c58a1b76ec470b0494d993ca22377e9423d6718a0bae4e199221a0f3fa2df
-size 2167
+<nav class="navbar navbar-expand-lg p-3 mb-5" style="margin-top: 75px;">
+    <div class="container-fluid">
+     <!-- <a class="navbar-brand ms-3" href="#">Categories:</a> -->
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="main_nav" >
+       <ul class="navbar-nav" >
+        <li class="nav-item dropdown mx-4" *ngFor="let category of halfCategories1 " [id]="category.id" >
+          <a  class="nav-link dropdown-toggle" data-bs-toggle="dropdown" [routerLink]="['/filteration/Advertisment/',category.id,'category']" > {{category.name}} </a>
+          <ul class="dropdown-menu">
+            <li  *ngFor="let subCategory of category.subCategoriesList" [id]="subCategory.id"><a class="dropdown-item" [routerLink]="['/filteration/Advertisment/',subCategory.id,'subcategory']"> {{subCategory.name}}</a></li>
+          </ul>
+         </li>
+
+         <li>
+          <div class="btn-group dropstart mt-1">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Other Categories
+            </button>
+            <ul class="dropdown-menu mt-5"  style="width:500px;margin-right:-50px;">
+              <li class="nav-item dropdown mx-4" *ngFor="let category of halfCategories2 " [id]="category.id" >
+                <a  class="nav-link " data-bs-toggle="dropdown" [routerLink]="['/filteration/Advertisment/',category.id,'category']" > {{category.name}} </a>
+                <ul class="dropdown-menu" *ngIf="category.subCategoriesList.length>0">
+                  <li  *ngFor="let subCategory of category.subCategoriesList" [id]="subCategory.id"><a class="dropdown-item" [routerLink]="['/filteration/Advertisment/',subCategory.id,'subcategory']"> {{subCategory.name}}</a></li>
+                </ul>
+               </li>
+            </ul>
+          </div>
+         </li>
+
+
+       </ul>
+     </div> <!-- navbar-collapse.// -->
+    </div> <!-- container-fluid.// -->
+   </nav>

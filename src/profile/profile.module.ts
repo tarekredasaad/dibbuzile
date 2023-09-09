@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ca6f24a5f07243ea40c4f93d86b5df192b7665c41df101fcb125e1be47d73a8
-size 653
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { ProfileRoutingModule } from './profile-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+
+
+@NgModule({
+  declarations: [
+    UserprofileComponent
+  ],
+  imports: [
+    CommonModule,
+    ProfileRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DropDownListModule,
+  ]
+})
+export class ProfileModule { }

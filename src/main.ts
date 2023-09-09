@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9e5eceab1c968cf54993e094f0183a733e3b55cdcc3fbe45f5c9a1302e6ee731
-size 642
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { registerLicense } from '@syncfusion/ej2-base';
+import { AppModule } from './app/app.module';
+import { enableProdMode } from '@angular/core';
+
+registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF5cXmdCdkx3TXxbf1xzZFRHalhWTnRaUj0eQnxTdEZjXn5XcndRQWJaVUN/Vg==');
+
+// import { environment } from './environments/environment';
+
+// if (environment.production) {
+//   enableProdMode();
+// }
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+
+
+  // const platform = platformBrowserDynamic();
+  // platform.bootstrapModule(AppModule);

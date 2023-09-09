@@ -1,3 +1,76 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:81962014d6e74092fc97f2bd2ff60ac077638c7b0435c93db79e6263915cdd36
-size 4513
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100" >
+        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-5 d-none d-sm-inline mt-2">  <img src="../../assets/admin.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                <span class="d-none d-sm-inline mx-1 ">&nbsp;Admin</span></span>
+        </a>
+        <ul style="margin-bottom:320px;" class="nav nav-pills flex-column align-items-center align-items-sm-start" id="menu">
+            <li>
+                <a routerLink="/admin/dashboard/categories" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Categories</span></a>
+            </li>
+
+            <li>
+                <a routerLink="/admin/dashboard/filters" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Filter Keys</span></a>
+            </li>
+
+            <li>
+                <a routerLink="/admin/dashboard/subCategoryFilters" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">SubCategory Filters</span></a>
+            </li>
+
+            <li>
+                <a routerLink="/admin/dashboard/filterValues" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Filtration Values</span></a>
+            </li>
+
+          <!-- <li>
+                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-4 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Filtrations</span></a>
+                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a routerLink="/admin/dashboard/filters" class="nav-link px-0"> <span class="d-none d-sm-inline">Filter Keys</span> </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/dashboard/subCategoryFilters" class="nav-link px-0"> <span class="d-none d-sm-inline">SubCategory Filters</span> </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/dashboard/filterValues" class="nav-link px-0"> <span class="d-none d-sm-inline">Filtration Values</span> </a>
+                    </li>
+                </ul>
+            </li> -->
+
+            <li>
+                <a routerLink="/admin/dashboard/packages" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Packages</span></a>
+            </li>
+            
+            <li>
+                <a routerLink="/admin/dashboard/advertisments" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Adverstisments</span></a>
+            </li>
+           
+            <!-- <li>
+                <a routerLink="/admin/dashboard/users" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                    <i class="fs-5 bi-table"></i>&nbsp;<span class="ms-1 d-none d-sm-inline">Users</span></a>
+            </li> -->
+        </ul>
+        <button class="btn btn-primary" type="button" style="width:120px; height:40px;" (click)="logOut()">
+           Logout
+        </button>
+
+        <!-- <div  class="dropup-center dropup">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:120px; height:40px;">
+                <a >
+                    <img src="../../assets/admin.png" alt="hugenerd" width="20" height="50" class="rounded-circle">
+                    <span class="d-none d-sm-inline mx-1">&nbsp;Admin</span>
+                </a>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div> -->
+        
+    </div>
